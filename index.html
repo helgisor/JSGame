@@ -1,0 +1,1727 @@
+<html>
+  <head>
+    <title>Monster Waves</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&family=Oswald&display=swap');
+
+      .hide {
+        display: none;
+      }
+
+      body {
+        font-family: 'Londrina Solid', cursive;
+      }
+
+      .car {
+        position: absolute;
+        bottom: 100px;
+        margin: auto;
+        width: 35px;
+        height: 52px;
+        line-height: 38px;
+        font-size: 1.7em;
+        text-align: center;
+        vertical-align: middle;
+        background-size: cover;
+        left: 23rem;
+      }
+
+      .enemy {
+        position: absolute;
+        bottom: 100px;
+        margin: auto;
+        width: 50px;
+        height: 50px;
+        line-height: 38px;
+        font-size: 1.7em;
+        text-align: center;
+        vertical-align: middle;
+        background-size: cover;
+      }
+
+      .enemyTwo {
+        position: absolute;
+        bottom: 100px;
+        margin: auto;
+        width: 66px;
+        height: 63px;
+        line-height: 38px;
+        font-size: 1.7em;
+        text-align: center;
+        vertical-align: middle;
+        background-size: cover;
+      }
+
+      .enemyThree {
+        position: absolute;
+        bottom: 100px;
+        margin: auto;
+        width: 84px;
+        height: 85px;
+        line-height: 38px;
+        font-size: 1.7em;
+        text-align: center;
+        vertical-align: middle;
+        background-size: cover;
+      }
+
+      .enemyFour {
+        position: absolute;
+        bottom: 100px;
+        margin: auto;
+        width: 161px;
+        height: 144px;
+        line-height: 38px;
+        font-size: 1.7em;
+        text-align: center;
+        vertical-align: middle;
+        background-size: cover;
+      }
+
+      .enemyThreeHit {
+        position: absolute;
+        bottom: 100px;
+        margin: auto;
+        width: 80px;
+        height: 69px;
+        line-height: 38px;
+        font-size: 1.7em;
+        text-align: center;
+        vertical-align: middle;
+        background-size: cover;
+      }
+
+      .enemyFourHit {
+        position: absolute;
+        bottom: 100px;
+        margin: auto;
+        width: 200px;
+        height: 92px;
+        line-height: 38px;
+        font-size: 1.7em;
+        text-align: center;
+        vertical-align: middle;
+        background-size: cover;
+      }
+
+      .enemyTwoHit {
+        position: absolute;
+        bottom: 100px;
+        margin: auto;
+        width: 60px;
+        height: 54px;
+        line-height: 38px;
+        font-size: 1.7em;
+        text-align: center;
+        vertical-align: middle;
+        background-size: cover;
+      }
+
+      .cannon {
+        position: absolute;
+        border-radius: 50%;
+        width: 36px;
+        height: 35px;
+      }
+
+      .lightining {
+        position: absolute;
+        border-radius: 50%;
+        width: 10px;
+        height: 420px;
+      }
+
+      .laser {
+        position: absolute;
+        border-radius: 50%;
+        width: 7px;
+        height: 20px;
+      }
+
+      .machineLaser {
+        position: absolute;
+        border-radius: 50%;
+        width: 7px;
+        height: 20px;
+      }
+
+      .score {
+        background-color: black;
+        height: 70px;
+        text-align: center;
+        color: white;
+        font-size: 1.5em;
+        font-family: fantasy;
+      }
+
+      .wrap {
+        flex-direction: column;
+        height: 100%;
+        display: none;
+      }
+
+      .game {
+        flex: 3;
+        display: flex;
+        justify-content: center;
+        background: #222;
+        flex-direction: row;
+      }
+
+      .gameArea {
+        width: 800px;
+        height: 850px;
+        background: url(./img/asphalt-1.png);
+        margin-top: 1.5%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .startScreen {
+        background: linear-gradient(
+            170deg,
+            black,
+            rgba(110, 2, 2, 1),
+            rgba(215, 4, 4, 1)
+          )
+          0 0 / 1000% no-repeat;
+
+        color: white;
+        z-index: 1;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        font-family: sans-serif;
+        display: flex;
+      }
+
+      .start {
+        flex: 1;
+      }
+
+      .instructions {
+        flex: 1;
+      }
+
+      .bomb {
+        position: absolute;
+        border-radius: 50%;
+        width: 9px;
+        height: 13px;
+      }
+
+      .mainStats {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .stats {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        color: white;
+        text-align: center;
+        width: 150px;
+
+        margin-right: 7px;
+        margin-top: 15%;
+      }
+
+      .mainStory {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+
+      .story {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        color: white;
+        text-align: center;
+        width: 150px;
+        height: 230px;
+        margin-right: 7px;
+        margin-top: 30%;
+      }
+
+      .portraitOne,
+      .portraitTwo {
+        width: 120px;
+        height: 120px;
+        border-radius: 15%;
+      }
+      .vitals {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+
+        margin-left: 8rem;
+
+        margin-bottom: 4rem;
+      }
+      .dialogOne,
+      .dialogTwo {
+        flex: 5;
+        width: 130px;
+        padding: 5%;
+        margin: auto;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 4%;
+      }
+
+      .health,
+      .laserStats,
+      .cannonStats {
+        flex: 1;
+        width: 30px;
+        height: 30px;
+        display: flex;
+      }
+      .healthImg {
+        margin-right: 50%;
+        flex: 1;
+        width: 30px;
+        height: 30px;
+      }
+      .laserImg,
+      .cannonImg {
+        margin-right: 50%;
+        flex: 1;
+        width: 30px;
+        height: 10px;
+      }
+
+      html {
+        height: 100%;
+      }
+      body {
+        background-color: #212121;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        height: 100%;
+      }
+
+      .startImage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Oswald', sans-serif;
+      }
+
+      figure.snip1206 {
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        max-width: 30rem;
+        max-height: 30rem;
+        color: #000000;
+        text-align: center;
+      }
+      figure.snip1206 * {
+        box-sizing: border-box;
+        transition: all 0.6s ease;
+      }
+      figure.snip1206 img {
+        opacity: 1;
+        width: 100%;
+        transition: opacity 0.35s;
+      }
+      figure.snip1206:after {
+        background: #ffffff;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        content: '';
+        opacity: 0.75;
+        transform: skew(-45deg) scaleX(0);
+        transition: all 0.3s ease-in-out;
+      }
+      figure.snip1206 figcaption {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        transform: translateY(-50%);
+        z-index: 1;
+      }
+      figure.snip1206 h2,
+      figure.snip1206 p {
+        margin: 0;
+        width: 100%;
+        opacity: 0;
+        font-family: 'Oswald', sans-serif;
+      }
+      figure.snip1206 h2 {
+        padding: 0 30px;
+        display: inline-block;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+      figure.snip1206 p {
+        padding: 0 50px;
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin-top: 7px;
+        color: black;
+      }
+      figure.snip1206 a {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        z-index: 1;
+      }
+      figure.snip1206:hover:after,
+      figure.snip1206.hover:after {
+        transform: skew(-45deg) scaleX(1);
+        transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      figure.snip1206:hover figcaption h2,
+      figure.snip1206.hover figcaption h2,
+      figure.snip1206:hover figcaption p,
+      figure.snip1206.hover figcaption p {
+        transform: translate3d(0%, 0%, 0);
+        transition-delay: 0.2s;
+      }
+      figure.snip1206:hover figcaption h2,
+      figure.snip1206.hover figcaption h2 {
+        opacity: 1;
+      }
+      figure.snip1206:hover figcaption p,
+      figure.snip1206.hover figcaption p {
+        opacity: 1;
+      }
+
+      .startP {
+        font-size: 2rem;
+        font-family: 'Londrina Solid', cursive;
+        letter-spacing: 2px;
+      }
+
+      .statistics {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-bottom: 5rem;
+        color: white;
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="startScreen">
+      <div class="start">
+        <p class="startP">Monster Waves</p>
+
+        <div class="startImage">
+          <figure class="snip1206">
+            <img src="img/startImg.png" alt="sample74" />
+            <figcaption>
+              <h2>Click to start</h2>
+              <p>Move to the left and right with the arrow keys</p>
+              <p>Press D for standard attack</p>
+              <p>Press W to fire your machinelaser</p>
+              <p>Press A to fire your laser beam</p>
+              <p>Ammo for W and A regenerates over time</p>
+            </figcaption>
+            <a href="#"></a>
+          </figure>
+        </div>
+
+        <p class="startP">Prevent the enemy from getting to your base!</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="game">
+        <div class="mainStats">
+          <div class="stats">
+            <img src="img/man-1.png" class="portraitOne" />
+            <div class="dialogOne"></div>
+          </div>
+        </div>
+        <div class="gameArea"></div>
+        <div class="mainStory">
+          <div class="story">
+            <img src="img/girl-1.png" class="portraitTwo hide" />
+            <div class="dialogTwo"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="statistics">
+        <div class="heart">Health: 10</div>
+        <div class="lasers">Machinelaser: 30</div>
+        <div class="cannonA">Laserbeam: 10</div>
+      </div>
+    </div>
+
+    <script>
+      const startScreen = document.querySelector('.startScreen');
+      const wrap = document.querySelector('.wrap');
+      const gameArea = document.querySelector('.gameArea');
+      const stats = document.querySelector('.stats');
+      const story = document.querySelector('.story');
+      const lasersStats = document.querySelector('.lasers');
+
+      const cannonsStats = document.querySelector('.cannons');
+      const cannonAStats = document.querySelector('.cannonA');
+      const healthStats = document.querySelector('.health');
+      const heart = document.querySelector('.heart');
+      const dialogOne = document.querySelector('.dialogOne');
+      const dialogTwo = document.querySelector('.dialogTwo');
+      const portraitTwo = document.querySelector('.portraitTwo');
+      const portraitOne = document.querySelector('.portraitOne');
+      const startImage = document.querySelector('.startImage');
+
+      let player = {
+        speed: 5,
+        enemySpeed: 1.2,
+        enemyTwoSpeed: 1.5,
+        enemyFourSpeed: 0.6,
+        score: 0,
+        leftPressed: false,
+        rightPressed: false,
+        spacePressed: false,
+        upPressed: false,
+        dPressed: false,
+        aPressed: false,
+        y: 0,
+        x: 0,
+        cannons: 10,
+        lasers: 10000,
+        health: 10,
+        waves: 2,
+        wavesTwo: 1,
+        laserBurst: 5,
+        machineLaser: 30,
+        machineLaserReady: true,
+        fifthWave: false,
+        lightining: 7,
+        lightiningReady: true,
+      };
+      let levelOneEnemies = [
+        'lvl-one-1',
+        'lvl-one-2',
+        'lvl-one-3',
+        'lvl-one-4',
+        'lvl-one-5',
+        'lvl-one-6',
+        'lvl-one-7',
+        'lvl-one-8',
+        'lvl-one-9',
+        'lvl-one-10',
+        'lvl-one-11',
+        'lvl-one-12',
+      ];
+      let levelTwoEnemies = [
+        'lvl-two-1',
+        'lvl-two-2',
+        'lvl-two-3',
+        'lvl-two-4',
+        'lvl-two-5',
+      ];
+      let levelThreeEnemies = ['lvl-three-1', 'lvl-three-2', 'lvl-three-3'];
+      let levelFourEnemies = ['lvl-four-1', 'lvl-four-2', 'lvl-four-3'];
+      const music = new Audio('snd/musicThree.mp4');
+      const music2 = new Audio('snd/musicOne.mp4');
+      const KEY_CODE_LEFT = 37;
+      const KEY_CODE_RIGHT = 39;
+      const KEY_CODE_SPACE = 32;
+
+      const KEY_CODE_D = 68;
+      const KEY_CODE_W = 87;
+      const KEY_CODE_A = 65;
+
+      startImage.addEventListener('click', start);
+      document.addEventListener('keydown', pressOn);
+      document.addEventListener('keyup', pressOff);
+
+      function isCollide(a, b) {
+        let aRect = a.getBoundingClientRect();
+        let bRect = b.getBoundingClientRect();
+        return !(
+          aRect.bottom < bRect.top ||
+          aRect.top > bRect.bottom ||
+          aRect.right < bRect.left ||
+          aRect.left > bRect.right
+        );
+      }
+
+      function makeBomb() {
+        if (player.ready) {
+          let bomb = document.createElement('div');
+          bomb.classList.add('bomb');
+          bomb.style.backgroundImage = 'url(img/laser-blue-1.png)';
+          bomb.style.backgroundSize = '9px 13px';
+          bomb.y = player.y;
+          bomb.x = player.x;
+          let bombY = bomb.y;
+          let bombX = bomb.x;
+          bomb.style.left = bomb.x + 14.8 + 'px';
+          bomb.style.top = bomb.y - 11 + 'px';
+          gameArea.appendChild(bomb);
+          player.ready = false;
+          setTimeout(function () {
+            player.ready = true;
+          }, 500);
+        }
+      }
+
+      function rectsIntersect(r1, r2) {
+        return !(
+          r2.left > r1.right ||
+          r2.right < r1.left ||
+          r2.top > r1.bottom ||
+          r2.bottom < r1.top
+        );
+      }
+
+      function moveBomb() {
+        let bombs = document.querySelectorAll('.bomb');
+        bombs.forEach(function (bomb) {
+          bomb.y -= 5;
+          bomb.style.top = bomb.y + 'px';
+          if (bomb.y < 0) {
+            bomb.parentElement.removeChild(bomb);
+          }
+          const r1 = bomb.getBoundingClientRect();
+          let enemies = document.querySelectorAll('.enemy');
+          for (let j = 0; j < enemies.length; j++) {
+            const enemy = enemies[j];
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2)) {
+              player.score++;
+              stats.innerHTML = player.score;
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              bomb.remove();
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+      }
+
+      function moveLaser() {
+        let lasers = document.querySelectorAll('.laser');
+        let enemies = document.querySelectorAll('.enemy');
+        let enemiesTwos = document.querySelectorAll('.enemyTwo');
+        let enemiesThrees = document.querySelectorAll('.enemyThree');
+        let enemiesFours = document.querySelectorAll('.enemyFour');
+        lasers.forEach(function (laser) {
+          laser.y -= 5;
+          laser.style.top = laser.y + 'px';
+          if (laser.y < 0) {
+            laser.parentElement.removeChild(laser);
+          }
+          for (let j = 0; j < enemies.length; j++) {
+            const enemy = enemies[j];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2)) {
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+              laser.remove();
+            }
+          }
+        });
+
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesTwos.length; i++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelTwoEnemies.length
+            );
+            const enemy = enemiesTwos[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp > 0) {
+              laser.remove();
+              enemy.hp--;
+              enemy.style.backgroundImage = 'url(img/zombie-walk-4.png)';
+              enemy.style.backgroundSize = '60px 54px';
+              enemy.classList.remove('enemyTwo');
+              enemy.classList.add('enemyTwoHit');
+              setTimeout(function () {
+                enemy.style.backgroundImage = `url(img/${levelTwoEnemies[randomSprite]}.png`;
+                enemy.style.backgroundSize = '66px 63px';
+                enemy.classList.remove('enemyTwoHit');
+                enemy.classList.add('enemyTwo');
+              }, 150);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesTwos.length; i++) {
+            const enemy = enemiesTwos[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp == 0) {
+              laser.remove();
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesThrees.length; i++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelThreeEnemies.length
+            );
+            const enemy = enemiesThrees[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp > 0) {
+              laser.remove();
+              enemy.hp--;
+              enemy.style.backgroundImage = 'url(img/lvl-three-hit.png)';
+              enemy.style.backgroundSize = '80px 69px';
+              enemy.classList.remove('enemyThree');
+              enemy.classList.add('enemyThreeHit');
+              setTimeout(function () {
+                enemy.style.backgroundImage = `url(img/${levelThreeEnemies[randomSprite]}.png`;
+                enemy.style.backgroundSize = '84px 85px';
+                enemy.classList.remove('enemyThreeHit');
+                enemy.classList.add('enemyThree');
+              }, 150);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesThrees.length; i++) {
+            const enemy = enemiesThrees[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp == 0) {
+              laser.remove();
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesFours.length; i++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelThreeEnemies.length
+            );
+            const enemy = enemiesFours[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp > 0) {
+              laser.remove();
+              enemy.hp--;
+              enemy.style.backgroundImage = 'url(img/lvl-four-hit.png)';
+              enemy.style.backgroundSize = '200px 92px';
+              enemy.classList.remove('enemyFour');
+              enemy.classList.add('enemyFourHit');
+              setTimeout(function () {
+                enemy.style.backgroundImage = `url(img/${levelFourEnemies[randomSprite]}.png`;
+                enemy.style.backgroundSize = '161px 144px';
+                enemy.classList.remove('enemyFourHit');
+                enemy.classList.add('enemyFour');
+              }, 150);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesFours.length; i++) {
+            const enemy = enemiesFours[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp == 0) {
+              laser.remove();
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+      }
+
+      function makeLaser() {
+        if (player.laserReady && player.lasers > 0) {
+          let laser1 = document.createElement('div');
+          laser1.classList.add('laser');
+          laser1.style.backgroundImage = 'url(img/laser-red-2.png)';
+          laser1.style.backgroundSize = '20x 7px';
+          laser1.y = player.y;
+          laser1.x = player.x;
+
+          laser1.style.left = laser1.x + 19 + 'px';
+          laser1.style.top = laser1.y - 11 + 'px';
+          player.lasers--;
+          gameArea.appendChild(laser1);
+          setTimeout(function () {
+            let laser2 = document.createElement('div');
+            laser2.classList.add('laser');
+            laser2.style.backgroundImage = 'url(img/laser-red-2.png)';
+            laser2.style.backgroundSize = '20x 7px';
+            laser2.y = player.y;
+            laser2.x = player.x;
+
+            laser2.style.left = laser2.x + 19 + 'px';
+            laser2.style.top = laser2.y - 11 + 'px';
+            player.lasers--;
+            gameArea.appendChild(laser2);
+          }, 100);
+          setTimeout(function () {
+            let laser3 = document.createElement('div');
+            laser3.classList.add('laser');
+            laser3.style.backgroundImage = 'url(img/laser-red-2.png)';
+            laser3.style.backgroundSize = '20x 7px';
+            laser3.y = player.y;
+            laser3.x = player.x;
+
+            laser3.style.left = laser3.x + 19 + 'px';
+            laser3.style.top = laser3.y - 11 + 'px';
+            player.lasers--;
+            gameArea.appendChild(laser3);
+          }, 200);
+          player.laserReady = false;
+          setTimeout(function () {
+            player.laserReady = true;
+          }, 700);
+        }
+      }
+
+      function moveMachineLaser() {
+        let lasers = document.querySelectorAll('.machineLaser');
+        let enemies = document.querySelectorAll('.enemy');
+        let enemiesTwos = document.querySelectorAll('.enemyTwo');
+        let enemiesThrees = document.querySelectorAll('.enemyThree');
+        let enemiesFours = document.querySelectorAll('.enemyFour');
+        lasers.forEach(function (laser) {
+          laser.y -= 5;
+          laser.style.top = laser.y + 'px';
+          if (laser.y < 0) {
+            laser.parentElement.removeChild(laser);
+          }
+          for (let j = 0; j < enemies.length; j++) {
+            const enemy = enemies[j];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2)) {
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+              laser.remove();
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesTwos.length; i++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelTwoEnemies.length
+            );
+            const enemy = enemiesTwos[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp > 0) {
+              laser.remove();
+              enemy.hp--;
+              enemy.style.backgroundImage = 'url(img/zombie-walk-4.png)';
+              enemy.style.backgroundSize = '60px 54px';
+              enemy.classList.remove('enemyTwo');
+              enemy.classList.add('enemyTwoHit');
+              setTimeout(function () {
+                enemy.style.backgroundImage = `url(img/${levelTwoEnemies[randomSprite]}.png`;
+                enemy.style.backgroundSize = '66px 63px';
+                enemy.classList.remove('enemyTwoHit');
+                enemy.classList.add('enemyTwo');
+              }, 150);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesTwos.length; i++) {
+            const enemy = enemiesTwos[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp == 0) {
+              laser.remove();
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesThrees.length; i++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelThreeEnemies.length
+            );
+            const enemy = enemiesThrees[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp > 0) {
+              laser.remove();
+              enemy.hp--;
+              enemy.style.backgroundImage = 'url(img/lvl-three-hit.png)';
+              enemy.style.backgroundSize = '80px 69px';
+              enemy.classList.remove('enemyThree');
+              enemy.classList.add('enemyThreeHit');
+              setTimeout(function () {
+                enemy.style.backgroundImage = `url(img/${levelThreeEnemies[randomSprite]}.png`;
+                enemy.style.backgroundSize = '84px 85px';
+                enemy.classList.remove('enemyThreeHit');
+                enemy.classList.add('enemyThree');
+              }, 150);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesThrees.length; i++) {
+            const enemy = enemiesThrees[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp == 0) {
+              laser.remove();
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesFours.length; i++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelThreeEnemies.length
+            );
+            const enemy = enemiesFours[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp > 0) {
+              laser.remove();
+              enemy.hp--;
+              enemy.style.backgroundImage = 'url(img/lvl-four-hit.png)';
+              enemy.style.backgroundSize = '200px 92px';
+              enemy.classList.remove('enemyFour');
+              enemy.classList.add('enemyFourHit');
+              setTimeout(function () {
+                enemy.style.backgroundImage = `url(img/${levelFourEnemies[randomSprite]}.png`;
+                enemy.style.backgroundSize = '161px 144px';
+                enemy.classList.remove('enemyFourHit');
+                enemy.classList.add('enemyFour');
+              }, 150);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesFours.length; i++) {
+            const enemy = enemiesFours[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp == 0) {
+              laser.remove();
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+      }
+
+      function makeMachineLaser() {
+        if (player.machineLaserReady && player.machineLaser > 0) {
+          let machinelas = document.createElement('div');
+          machinelas.classList.add('machineLaser');
+          machinelas.style.backgroundImage = 'url(img/laser-red-2.png)';
+          machinelas.style.backgroundSize = '20x 7px';
+          machinelas.y = player.y;
+          machinelas.x = player.x;
+
+          machinelas.style.left = machinelas.x + 19 + 'px';
+          machinelas.style.top = machinelas.y - 20 + 'px';
+          player.machineLaser--;
+          gameArea.appendChild(machinelas);
+          lasersStats.innerHTML = `Machinelaser: ${player.machineLaser}`;
+          player.machineLaserReady = false;
+          lasersStats.innerHTML = `Machinelaser: ${player.machineLaser}`;
+          setTimeout(function () {
+            player.machineLaserReady = true;
+          }, 50);
+          if (player.machineLaser == 0) {
+            setTimeout(function () {
+              player.machineLaser = 30;
+              lasersStats.innerHTML = `Machinelaser: ${player.machineLaser}`;
+            }, 5000);
+          }
+        }
+      }
+
+      function makeLightning() {
+        if (player.lightiningReady && player.lightining > 0) {
+          let lightining = document.createElement('div');
+          lightining.classList.add('lightining');
+          lightining.style.backgroundImage = 'url(img/lightining-1.png)';
+          lightining.style.backgroundSize = '420x 10px';
+          lightining.y = player.y;
+          lightining.x = player.x;
+          lightining.style.left = lightining.x + 17 + 'px';
+          lightining.style.top = lightining.y - 420 + 'px';
+          player.lightining--;
+          gameArea.appendChild(lightining);
+
+          cannonAStats.innerHTML = `Laserbeam: ${player.lightining}`;
+          player.lightiningReady = false;
+          setTimeout(function () {
+            lightining.remove();
+          }, 70);
+          setTimeout(function () {
+            player.lightiningReady = true;
+          }, 300);
+          if (player.lightining == 0) {
+            setTimeout(function () {
+              player.lightining = 7;
+              cannonAStats.innerHTML = `Laserbeam: ${player.lightining}`;
+            }, 5000);
+          }
+        }
+      }
+
+      function moveLightining() {
+        let lasers = document.querySelectorAll('.lightining');
+        let enemies = document.querySelectorAll('.enemy');
+        let enemiesTwos = document.querySelectorAll('.enemyTwo');
+        let enemiesThrees = document.querySelectorAll('.enemyThree');
+        let enemiesFours = document.querySelectorAll('.enemyFour');
+        lasers.forEach(function (laser) {
+          for (let j = 0; j < enemies.length; j++) {
+            const enemy = enemies[j];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2)) {
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesTwos.length; i++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelTwoEnemies.length
+            );
+            const enemy = enemiesTwos[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp > 0) {
+              enemy.hp--;
+              enemy.style.backgroundImage = 'url(img/zombie-walk-4.png)';
+              enemy.style.backgroundSize = '60px 54px';
+              enemy.classList.remove('enemyTwo');
+              enemy.classList.add('enemyTwoHit');
+              setTimeout(function () {
+                enemy.style.backgroundImage = `url(img/${levelTwoEnemies[randomSprite]}.png`;
+                enemy.style.backgroundSize = '66px 63px';
+                enemy.classList.remove('enemyTwoHit');
+                enemy.classList.add('enemyTwo');
+              }, 150);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesTwos.length; i++) {
+            const enemy = enemiesTwos[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp == 0) {
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesThrees.length; i++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelThreeEnemies.length
+            );
+            const enemy = enemiesThrees[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp > 0) {
+              enemy.hp--;
+              enemy.style.backgroundImage = 'url(img/lvl-three-hit.png)';
+              enemy.style.backgroundSize = '80px 69px';
+              enemy.classList.remove('enemyThree');
+              enemy.classList.add('enemyThreeHit');
+              setTimeout(function () {
+                enemy.style.backgroundImage = `url(img/${levelThreeEnemies[randomSprite]}.png`;
+                enemy.style.backgroundSize = '84px 85px';
+                enemy.classList.remove('enemyThreeHit');
+                enemy.classList.add('enemyThree');
+              }, 150);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesThrees.length; i++) {
+            const enemy = enemiesThrees[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp == 0) {
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesFours.length; i++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelThreeEnemies.length
+            );
+            const enemy = enemiesFours[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp > 0) {
+              enemy.hp--;
+              enemy.style.backgroundImage = 'url(img/lvl-four-hit.png)';
+              enemy.style.backgroundSize = '200px 92px';
+              enemy.classList.remove('enemyFour');
+              enemy.classList.add('enemyFourHit');
+              setTimeout(function () {
+                enemy.style.backgroundImage = `url(img/${levelFourEnemies[randomSprite]}.png`;
+                enemy.style.backgroundSize = '161px 144px';
+                enemy.classList.remove('enemyFourHit');
+                enemy.classList.add('enemyFour');
+              }, 150);
+            }
+          }
+        });
+        lasers.forEach(function (laser) {
+          for (let i = 0; i < enemiesFours.length; i++) {
+            const enemy = enemiesFours[i];
+            const r1 = laser.getBoundingClientRect();
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2) && enemy.hp == 0) {
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+      }
+
+      function makeCannon() {
+        if (player.cannonReady && player.cannons > 0) {
+          let cannon = document.createElement('div');
+          cannon.classList.add('cannon');
+          cannon.style.backgroundImage = 'url(img/laser-blue-2.png)';
+          cannon.style.backgroundSize = '36x 35px';
+          cannon.y = player.y;
+          cannon.x = player.x;
+          cannon.style.left = cannon.x + 14.8 + 'px';
+          cannon.style.top = cannon.y - 11 + 'px';
+          player.cannons--;
+          gameArea.appendChild(cannon);
+          player.cannonReady = false;
+          setTimeout(function () {
+            player.cannonReady = true;
+          }, 1500);
+        }
+      }
+
+      function moveCannon() {
+        let cannons = document.querySelectorAll('.cannon');
+        cannons.forEach(function (cannon) {
+          cannon.y -= 5;
+          cannon.style.top = cannon.y + 'px';
+          if (cannon.y < 0) {
+            cannon.parentElement.removeChild(cannon);
+          }
+          const r1 = cannon.getBoundingClientRect();
+          let enemies = document.querySelectorAll('.enemy');
+          for (let j = 0; j < enemies.length; j++) {
+            const enemy = enemies[j];
+            const r2 = enemy.getBoundingClientRect();
+            if (rectsIntersect(r1, r2)) {
+              stats.innerHTML = player.score;
+              enemy.style.backgroundImage = 'url(img/explode-green-1.png)';
+              enemy.backgroundSize = '36px 36px';
+              setTimeout(function () {
+                enemy.remove();
+              }, 200);
+            }
+          }
+        });
+      }
+
+      function moveEnemy(car) {
+        let ele = document.querySelectorAll('.enemy');
+        let enemyTwo = document.querySelectorAll('.enemyTwo');
+        let enemyThree = document.querySelectorAll('.enemyThree');
+        let enemyFour = document.querySelectorAll('.enemyFour');
+        let bombz = document.querySelectorAll('.bomb');
+        ele.forEach(function (item) {
+          if (isCollide(car, item)) {
+            endGame();
+          }
+          if (item.y > 850) {
+            item.parentElement.removeChild(item);
+
+            player.health--;
+            heart.innerHTML = 'Health: ' + player.health;
+          }
+          if (player.health == 0) {
+            endGame();
+          }
+          item.y += player.enemySpeed;
+          item.style.top = item.y + 'px';
+        });
+        enemyTwo.forEach(function (enemy) {
+          if (isCollide(car, enemy)) {
+            endGame();
+          }
+          if (enemy.y > 850) {
+            enemy.parentElement.removeChild(enemy);
+
+            player.health--;
+            heart.innerHTML = 'Health: ' + player.health;
+            if (player.health == 0) {
+              endGame();
+            }
+          }
+          enemy.y += player.enemyTwoSpeed;
+          enemy.style.top = enemy.y + 'px';
+          enemyX = enemy.style.left;
+        });
+        enemyThree.forEach(function (enemy) {
+          if (isCollide(car, enemy)) {
+            endGame();
+          }
+          if (enemy.y > 850) {
+            enemy.parentElement.removeChild(enemy);
+
+            player.health--;
+            heart.innerHTML = 'Health: ' + player.health;
+            if (player.health == 0) {
+              endGame();
+            }
+          }
+          enemy.y += player.enemySpeed;
+          enemy.style.top = enemy.y + 'px';
+          enemyX = enemy.style.left;
+        });
+        enemyFour.forEach(function (enemy) {
+          if (isCollide(car, enemy)) {
+            endGame();
+          }
+          if (enemy.y > 850) {
+            enemy.parentElement.removeChild(enemy);
+
+            player.health = -10;
+            heart.innerHTML = 'Health: ' + player.health;
+            if (player.health == 0) {
+              endGame();
+            }
+          }
+          enemy.y += player.enemyTwoSpeed;
+          enemy.style.top = enemy.y + 'px';
+          enemyX = enemy.style.left;
+        });
+      }
+
+      function secondWave() {
+        console.log('second wave');
+        let test = 0;
+        for (let x = 0; x < 0; x++) {
+          let randomSprite = Math.floor(Math.random() * levelOneEnemies.length);
+          let enemy = document.createElement('div');
+          enemy.y = -1200 + test;
+          test += 20;
+          enemy.style.backgroundImage = `url(img/${levelOneEnemies[randomSprite]}.png`;
+          enemy.style.backgroundSize = '50px 50px';
+          enemy.classList.add('enemy');
+          enemy.style.top = enemy.y + 'px';
+          enemy.style.left = Math.floor(Math.random() * 760) + 'px';
+          gameArea.appendChild(enemy);
+        }
+      }
+
+      thirdWave = () => {
+        console.log('third wave');
+        portraitTwo.classList.add('hide');
+        portraitTwo.src = '';
+        setTimeout(function () {
+          portraitTwo.classList.remove('hide');
+          portraitTwo.src = 'img/monster-portrait-1.png';
+          dialogTwo.innerHTML = 'Humansss!';
+        }, 1000);
+        setTimeout(function () {
+          portraitTwo.src = 'img/girl-1.png';
+          dialogTwo.innerHTML = 'What the hell are those things?';
+        }, 3000);
+        setTimeout(function () {
+          portraitTwo.src = 'img/monster-portrait-1.png';
+          dialogTwo.innerHTML = 'Hsss!';
+        }, 5000);
+        setTimeout(function () {
+          dialogOne.innerHTML = 'Knew I had to take sick leave today.';
+        }, 6000);
+        setTimeout(function () {
+          portraitTwo.src = 'img/monster-portrait-1.png';
+          dialogTwo.innerHTML = '';
+        }, 10000);
+        setTimeout(function () {
+          dialogOne.innerHTML = '';
+        }, 11000);
+        let test = 0;
+        let enemyX = 0;
+        let enemyX2 = 0;
+        let enemyX3 = 0;
+        for (let x = 0; x < 10; x++) {
+          let randomSprite = Math.floor(Math.random() * levelTwoEnemies.length);
+          let randomYPos = Math.floor(Math.random() * 150);
+          let enemyTwo = document.createElement('div');
+          enemyTwo.style.backgroundImage = `url(img/${levelTwoEnemies[randomSprite]}.png`;
+          let enemyY = randomYPos;
+          enemyTwo.y = -1500 + enemyY;
+          enemyTwo.hp = 3;
+          enemyTwo.style.backgroundSize = '66px 63px';
+          enemyTwo.classList.add('enemyTwo');
+          enemyTwo.style.top = enemyTwo.y + 'px';
+          if (enemyX >= 760) {
+            enemyX = 0;
+          }
+          enemyTwo.style.left = enemyX + 'px';
+          enemyX += 80;
+          gameArea.appendChild(enemyTwo);
+        }
+        setTimeout(function () {
+          for (let x = 0; x < 10; x++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelTwoEnemies.length
+            );
+            let randomYPos = Math.floor(Math.random() * 150);
+            let enemyTwo = document.createElement('div');
+            enemyTwo.style.backgroundImage = `url(img/${levelTwoEnemies[randomSprite]}.png`;
+            let enemyY = randomYPos;
+            enemyTwo.y = -1500 + enemyY;
+            enemyTwo.hp = 3;
+            enemyTwo.style.backgroundSize = '66px 63px';
+            enemyTwo.classList.add('enemyTwo');
+            enemyTwo.style.top = enemyTwo.y + 'px';
+            if (enemyX2 >= 760) {
+              enemyX2 = 0;
+            }
+            enemyTwo.style.left = enemyX2 + 'px';
+            enemyX2 += 80;
+            gameArea.appendChild(enemyTwo);
+          }
+        }, 2700);
+        setTimeout(function () {
+          for (let x = 0; x < 10; x++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelTwoEnemies.length
+            );
+            let randomYPos = Math.floor(Math.random() * 150);
+            let enemyTwo = document.createElement('div');
+            enemyTwo.style.backgroundImage = `url(img/${levelTwoEnemies[randomSprite]}.png`;
+            let enemyY = randomYPos;
+            enemyTwo.y = -1500 + enemyY;
+            enemyTwo.hp = 3;
+            enemyTwo.style.backgroundSize = '66px 63px';
+            enemyTwo.classList.add('enemyTwo');
+            enemyTwo.style.top = enemyTwo.y + 'px';
+            if (enemyX3 >= 760) {
+              enemyX3 = 0;
+            }
+            enemyTwo.style.left = enemyX3 + 'px';
+            enemyX3 += 80;
+            gameArea.appendChild(enemyTwo);
+          }
+        }, 5200);
+
+        setTimeout(() => {
+          fourthWave();
+          console.log('fourth wave');
+        }, 18000);
+      };
+
+      fourthWave = () => {
+        let test = 0;
+        for (let x = 0; x < 7; x++) {
+          let randomSprite = Math.floor(
+            Math.random() * levelThreeEnemies.length
+          );
+          let enemyThree = document.createElement('div');
+          enemyThree.style.backgroundImage = `url(img/${levelThreeEnemies[randomSprite]}.png`;
+          enemyThree.y = -1200 + test;
+          test += 20;
+          enemyThree.hp = 6;
+          enemyThree.style.backgroundSize = '84x 85px';
+          enemyThree.classList.add('enemyThree');
+          enemyThree.style.top = enemyThree.y + 'px';
+          enemyThree.style.left = Math.floor(Math.random() * 760) + 'px';
+          gameArea.appendChild(enemyThree);
+        }
+        setTimeout(function () {
+          for (let x = 0; x < 7; x++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelThreeEnemies.length
+            );
+            let enemyThree = document.createElement('div');
+            enemyThree.style.backgroundImage = `url(img/${levelThreeEnemies[randomSprite]}.png`;
+            enemyThree.y = -1200 + test;
+            test += 20;
+            enemyThree.hp = 6;
+            enemyThree.style.backgroundSize = '84x 85px';
+            enemyThree.classList.add('enemyThree');
+            enemyThree.style.top = enemyThree.y + 'px';
+            enemyThree.style.left = Math.floor(Math.random() * 760) + 'px';
+            gameArea.appendChild(enemyThree);
+          }
+        }, 2700);
+
+        setTimeout(() => {
+          portraitTwo.src = 'img/monster-portrait-2.png';
+          dialogTwo.innerHTML = 'Grrowr!';
+        }, 4000);
+
+        setTimeout(() => {
+          dialogOne.innerHTML = '';
+        }, 14000);
+
+        setTimeout(() => {
+          fifthWave();
+        }, 15000);
+      };
+
+      function fifthWave() {
+        let test = 0;
+        for (let x = 0; x < 3; x++) {
+          let randomSprite = Math.floor(
+            Math.random() * levelFourEnemies.length
+          );
+          let enemyFour = document.createElement('div');
+          enemyFour.y = -1200 + test;
+          test += 150;
+          enemyFour.hp = 40;
+          enemyFour.style.backgroundImage = `url(img/${levelFourEnemies[randomSprite]}.png`;
+          enemyFour.style.backgroundSize = '161x 144px';
+          enemyFour.classList.add('enemyFour');
+          enemyFour.style.top = enemyFour.y + 'px';
+
+          enemyFour.style.left = test + 'px';
+          gameArea.appendChild(enemyFour);
+        }
+
+        player.fifthWave = true;
+
+        console.log(player.fifthWave);
+        setTimeout(() => {
+          portraitTwo.src = 'img/girl-1.png';
+          dialogTwo.innerHTML = 'Holy crap!';
+        }, 3000);
+        setTimeout(() => {
+          dialogTwo.innerHTML = 'You cannot stop us, foolish human!';
+          portraitTwo.src = 'img/rsz_zombie4_icon_no_bg.png';
+        }, 7000);
+
+        setTimeout(() => {
+          dialogOne.innerHTML = 'I believe that is incorrect.';
+        }, 10000);
+        setTimeout(() => {
+          dialogOne.innerHTML = '';
+        }, 10000);
+        setTimeout(() => {
+          dialogTwo.innerHTML = '';
+        }, 17000);
+        setTimeout(() => {
+          dialogTwo.innerHTML = '';
+          portraitTwo.src = 'img/rsz_zombie4_icon_no_bg.png';
+        }, 17000);
+      }
+
+      function playGame() {
+        let car = document.querySelector('.car');
+        let enemies = document.querySelectorAll('.enemy');
+        let enemiesTwo = document.querySelectorAll('.enemyTwo');
+        let enemiesThree = document.querySelectorAll('.enemyThree');
+        let enemiesFour = document.querySelectorAll('.enemyFour');
+        moveEnemy(car);
+        moveBomb();
+        moveCannon();
+        moveLaser();
+        moveMachineLaser();
+        moveLightining();
+        if (enemies.length < 10 && player.waves > 0) {
+          player.waves--;
+          secondWave();
+        }
+        if (enemies.length == 0 && player.wavesTwo == 1) {
+          player.wavesTwo = 0;
+          player.machineLaser = 60;
+          console.log('third wave');
+          thirdWave();
+        }
+
+        let road = gameArea.getBoundingClientRect();
+        if (player.start) {
+          if (player.upPressed && player.y > -755) {
+            player.y -= player.speed;
+          }
+          if (player.downPressed && player.y < 870) {
+            player.y += player.speed;
+          }
+          if (player.leftPressed && player.x > 0) {
+            player.x -= player.speed;
+          }
+          if (player.rightPressed && player.x < road.width - 50) {
+            player.x += player.speed;
+          }
+          if (player.spacePressed) {
+            makeBomb();
+          }
+
+          if (player.dPressed) {
+            makeLaser();
+          }
+          if (player.wPressed) {
+            makeMachineLaser();
+          }
+          if (player.aPressed) {
+            makeLightning();
+          }
+          car.style.left = player.x + 'px';
+
+          car.style.top = player.y + 'px';
+          window.requestAnimationFrame(playGame);
+        }
+      }
+
+      function pressOn(e) {
+        if (e.keyCode === KEY_CODE_LEFT) {
+          player.leftPressed = true;
+        } else if (e.keyCode === KEY_CODE_RIGHT) {
+          player.rightPressed = true;
+        } else if (e.keyCode === KEY_CODE_SPACE) {
+          player.spacePressed = true;
+        } else if (e.keyCode === KEY_CODE_D) {
+          player.dPressed = true;
+        } else if (e.keyCode === KEY_CODE_W) {
+          player.wPressed = true;
+        } else if (e.keyCode === KEY_CODE_A) {
+          player.aPressed = true;
+        }
+      }
+
+      function pressOff(e) {
+        if (e.keyCode === KEY_CODE_LEFT) {
+          player.leftPressed = false;
+        } else if (e.keyCode === KEY_CODE_RIGHT) {
+          player.rightPressed = false;
+        } else if (e.keyCode === KEY_CODE_SPACE) {
+          player.spacePressed = false;
+        } else if (e.keyCode === KEY_CODE_D) {
+          player.dPressed = false;
+        } else if (e.keyCode === KEY_CODE_W) {
+          player.wPressed = false;
+        } else if (e.keyCode === KEY_CODE_A) {
+          player.aPressed = false;
+        }
+      }
+
+      function endGame() {
+        player.start = false;
+        startScreen.classList.remove('hide');
+
+        setTimeout(function () {
+          dialogOne.innerHTML = "Guess that's it then.";
+        }, 2000);
+        setTimeout(function () {
+          dialogTwo.innerHTML = '...';
+          portraitTwo.src = 'img/girl-1.png';
+        }, 2500);
+      }
+
+      function firstWave() {
+        music2.volume = 0.2;
+        music2.play();
+        let enemyX = 0;
+        for (let x = 0; x < 13; x++) {
+          let randomSprite = Math.floor(Math.random() * levelOneEnemies.length);
+          let randomYPos = Math.floor(Math.random() * 150);
+          let enemy = document.createElement('div');
+          enemy.style.backgroundImage = `url(img/${levelOneEnemies[randomSprite]}.png`;
+          let enemyY = randomYPos;
+          enemy.y = -1300 + enemyY;
+          enemy.style.backgroundSize = '50px 50px';
+          enemy.classList.add('enemy');
+          enemy.style.top = enemy.y + 'px';
+          if (enemyX >= 780) {
+            enemyX = 0;
+          }
+          enemy.style.left = enemyX + 'px';
+          enemyX += 60;
+          gameArea.appendChild(enemy);
+        }
+        setTimeout(function () {
+          for (let x = 0; x < 13; x++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelOneEnemies.length
+            );
+            let randomYPos = Math.floor(Math.random() * 150);
+            let enemy = document.createElement('div');
+            enemy.style.backgroundImage = `url(img/${levelOneEnemies[randomSprite]}.png`;
+            let enemyY = randomYPos;
+            enemy.y = -1300 + enemyY;
+            enemy.style.backgroundSize = '50px 50px';
+            enemy.classList.add('enemy');
+            enemy.style.top = enemy.y + 'px';
+            if (enemyX >= 780) {
+              enemyX = 0;
+            }
+            enemy.style.left = enemyX + 'px';
+            enemyX += 60;
+            gameArea.appendChild(enemy);
+          }
+        }, 2700);
+        setTimeout(function () {
+          for (let x = 0; x < 13; x++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelOneEnemies.length
+            );
+            let randomYPos = Math.floor(Math.random() * 150);
+            let enemy = document.createElement('div');
+            enemy.style.backgroundImage = `url(img/${levelOneEnemies[randomSprite]}.png`;
+            let enemyY = randomYPos;
+            enemy.y = -1300 + enemyY;
+            enemy.style.backgroundSize = '50px 50px';
+            enemy.classList.add('enemy');
+            enemy.style.top = enemy.y + 'px';
+            if (enemyX >= 780) {
+              enemyX = 0;
+            }
+            enemy.style.left = enemyX + 'px';
+            enemyX += 60;
+            gameArea.appendChild(enemy);
+          }
+        }, 5300);
+        setTimeout(function () {
+          for (let x = 0; x < 13; x++) {
+            let randomSprite = Math.floor(
+              Math.random() * levelOneEnemies.length
+            );
+            let randomYPos = Math.floor(Math.random() * 150);
+            let enemy = document.createElement('div');
+            enemy.style.backgroundImage = `url(img/${levelOneEnemies[randomSprite]}.png`;
+            let enemyY = randomYPos;
+            enemy.y = -1300 + enemyY;
+            enemy.style.backgroundSize = '50px 50px';
+            enemy.classList.add('enemy');
+            enemy.style.top = enemy.y + 'px';
+            if (enemyX >= 780) {
+              enemyX = 0;
+            }
+            enemy.style.left = enemyX + 'px';
+            enemyX += 60;
+            gameArea.appendChild(enemy);
+          }
+        }, 7700);
+        story.classList.remove('hide');
+        stats.classList.remove('hide');
+        setTimeout(function () {
+          portraitTwo.classList.remove('hide');
+          portraitTwo.src = 'img/girl-1.png';
+          dialogTwo.innerHTML = "Zombies! They're coming!";
+        }, 1000);
+        setTimeout(function () {
+          dialogTwo.innerHTML = '';
+        }, 3000);
+        setTimeout(function () {
+          portraitTwo.classList.add('hide');
+          portraitTwo.src = '';
+        }, 7000);
+        setTimeout(function () {
+          dialogOne.innerHTML = 'Good, I was getting bored.';
+        }, 4000);
+        setTimeout(function () {
+          portraitTwo.classList.remove('hide');
+          portraitTwo.src = 'img/zombie-portrait-1.png';
+          dialogTwo.innerHTML = 'Braaaains!';
+        }, 7500);
+        setTimeout(function () {
+          dialogOne.innerHTML = '';
+        }, 6500);
+        setTimeout(function () {
+          dialogTwo.innerHTML = '';
+        }, 9500);
+      }
+
+      function start() {
+        wrap.style.display = 'flex';
+        startScreen.style.display = 'none';
+        startScreen.classList.add('hide');
+        gameArea.innerHTML = '';
+
+        player.start = true;
+        player.ready = true;
+        player.score = 0;
+        player.cannonReady = true;
+        player.laserReady = true;
+        let car = document.createElement('div');
+        car.style.backgroundImage = 'url(img/man-walk-3.png)';
+        car.style.backgroundSize = '35px 52px';
+        car.setAttribute('class', 'car');
+        gameArea.appendChild(car);
+        player.x = car.offsetLeft;
+
+        player.y = car.offsetTop;
+        firstWave();
+        window.requestAnimationFrame(playGame);
+      }
+    </script>
+  </body>
+</html>
